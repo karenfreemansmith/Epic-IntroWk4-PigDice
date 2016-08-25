@@ -1,21 +1,3 @@
-function Player(name) {
-  this.name=name;
-  this.gameScore=0;
-  this.turnScore=0;
-}
-
-function Die(sides) {
-  this.sides = sides;
-  this.value = 1;
-  this.roll();
-}
-
-Die.prototype.roll=function(){
-    min = 1;
-    max = this.sides;
-    this.value = Math.floor(Math.random()*(max - min+1)) + min;
-}
-
 function Game() {
   this.gameOver = true;
   this.currentPlayer = 0;
@@ -48,6 +30,24 @@ Game.prototype.endTurn = function() {
   }
 }
 
+function Player(name) {
+  this.name=name;
+  this.gameScore=0;
+  this.turnScore=0;
+}
+
+function Die(sides) {
+  this.sides = sides;
+  this.value = 1;
+  this.roll();
+}
+
+Die.prototype.roll=function(){
+    min = 1;
+    max = this.sides;
+    this.value = Math.floor(Math.random()*(max - min+1)) + min;
+}
+
 // UI logic
 var newGame = new Game();
 
@@ -56,12 +56,19 @@ function endTurn() {
 }
 
 function endGame() {
-  alert("end game!");
+  if(newGame.players[newGame.currentPlayer].gameScore + newGame.players[newGame.currentPlayer].turnScore >= 100) {
+    alert("GAME OVER: "+ newGame.players[newGame.currentPlayer].name +" won with a score of " + newGame.players[newGame.currentPlayer].gameScore + newGame.players[newGame.currentPlayer].turnScore + "!!");
+  } else {
+    alert("end game!");
+  }
   newGame.endGame();
   $("#listPlayers").empty();
   $("#displayDie").html("<img src='img/roll.png' class='img-responsive'>");
   $("#currentScore").text("Current Player Name");
   $("#currentPlayer").text("Current Turn Score");
+  $("#hold").prop("disabled", false);
+  $("#roll").prop("disabled", false);
+  $("#playGame").prop("disabled", false);
 }
 
 function showScores() {
@@ -83,7 +90,10 @@ function startTurn () {
   $("#currentPlayer").text(newGame.players[newGame.currentPlayer].name + ": " + newGame.players[newGame.currentPlayer].gameScore);
   showScores();
   if(newGame.players[newGame.currentPlayer].turnScore===0) {
-    alert("Sorry, " + newGame.players[newGame.currentPlayer].name + " you rolled a 1. You get NOTHING!!");
+    setTimeout(function() {
+      alert("Sorry, " + newGame.players[newGame.currentPlayer].name + " you rolled a 1. You get NOTHING!!");
+    },500);
+
     endTurn();
     startTurn();
   }
@@ -97,16 +107,28 @@ $("#addPlayer").click(function() {
   $("#listPlayers").append("<li>" + newPlayer.name + "</li>");
   newGame.addPlayer(newPlayer);
   $("#playerName").val("");
-});
-
-$("#roll").click(function(){
-  startTurn();
+  if($("#playGame:disabled")) {
+    $("#playGame").prop("disabled", false);
+  }
 });
 
 $("#playGame").click(function(){
+  if(!newGame.gameOver) {
+    endGame();
+  }
   newGame.startGame();
   $("#listPlayers").hide();
+  if($("#roll:disabled")) {
+    $("#roll").prop("disabled", false);
+  }
+  if($("#hold:disabled")) {
+    $("#hold").prop("disabled", false);
+  }
   showScores();
+  startTurn();
+});
+
+$("#roll").click(function(){
   startTurn();
 });
 
