@@ -1,20 +1,31 @@
-# :pig: [Pig-Dice](http://karenfreemansmith.github.io/pig-dice)
-![project screenshot](/img/screenshot.jpg)
+# Pig-Dice
+Version 0.0.2: August 24, 2016
+by [Karen Freeman-Smith](https://karenfreemansmith.github.io) and [Kyle Lange](https://github.com/kylelange)
 
-__Version 2: August 24, 2016__
-## by [Karen Freeman-Smith](http://karenfreemansmith.github.io) and [Kyle Lange](https://github.com/kylelange)
+### Technologies Used
+HTML, CSS, Bootstrap, JavaScript, jQuery
 
-### Description
-__*A webpage that plays pig-dice.*__
+![screenshot of project running](screenshot.png)
 
+## Description
+*[Epicodus](http://epicodus.com) Intro to Programming Week 4 Pair Project with Kyle Lange: A web-based game of pig dice.*
+
+## Setup/Installation
+* [View on Github Pages](https://karenfreemansmith.github.io/Epic-IntroWk4-PigDice)
+* _OR_
+* Clone directory
+* Open index.html in your favorite browser
+
+## Support & Contact
+For questions, concerns, or suggestions please email karenfreemansmith@gmail.com
+
+## Specifications
 Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold":
-
-    * If the player rolls a 1, they score nothing and it becomes the next player's turn.
-    * If the player rolls any other number, it is added to their turn total and the player's turn continues.
-    * If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
-
+  * If the player rolls a 1, they score nothing and it becomes the next player's turn.
+  * If the player rolls any other number, it is added to their turn total and the player's turn continues.
+  * If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
 The first player to score 100 or more points wins.
-BDD:
+
 *Spec 1: the program will roll a d6 randomly, accumulate the die rolls.
   * Input: a random number from 1 - 6: (3)
   * Output: score = score + new random number (0 + 3 = 3)*
@@ -34,22 +45,10 @@ BDD:
   * Input: temp score = 6
   * Output: player score + temp score >= 100 (96 + 6 = 102)*
 
-## Technologies Used
-HTML, CSS
-
-## Setup/Installation
-* [View on Github Pages](https://karenfreemansmith.github.io/EpicIntroWk1-PetWebsite)
-* _OR_
-* Clone diectory 
-* Open index.html in your favorite browser
-
-## Support & Contact
-For questions, concerns, or suggestions please email karenfreemansmith@gmail.com
-
 ## Known Issues
 * None
 
 ## Legal
 *Licensed under the GNU General Public License v3.0*
 
-Copyright (c) 2016 Copyright _[Karen Freeman-Smith](https://karenfreemansmith.github.io)_ All Rights Reserved.
+Copyright (c) 2016 Copyright _[Karen Freeman-Smith](https://karenfreemansmith.github.io) & [Kyle Lange](https://github.com/kylelange)_ All Rights Reserved.
